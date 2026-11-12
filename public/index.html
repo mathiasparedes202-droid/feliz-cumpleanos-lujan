@@ -443,7 +443,7 @@
     transition:background .25s, transform .25s;
   }
   .photo .remove:hover{background:rgba(140,20,60,.85); transform:scale(1.08)}
-  .photo.has .remove{display:grid}
+  .photo.user .remove{display:grid}
 
   /* spotify */
   .spotify{max-width:46rem; margin:0 auto}
@@ -635,7 +635,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">Recuerdos</span>
-        <h2>Nuestros momentos</h2>
+        <h2>LA mujer mas </h2>
         <p>Podés poner tus fotos favoritas: tocá cada marco y elegí una imagen de tu dispositivo.</p>
       </div>
 
@@ -1141,6 +1141,14 @@
      6. GALERÍA (fotos desde el dispositivo)
      ============================================================ */
   const CAPTIONS = ['Mi persona favorita', 'Risas que guardo', 'Nuestro lugar'];
+
+  // Fotos fijas de la página (archivos en public/img). Poné null donde no haya.
+  const DEFAULTS = [
+    { src: 'img/favorita.jpeg', pos: '58% 42%' },
+    { src: 'img/sonrisa.jpeg', pos: '50% 30%' },
+    null
+  ];
+
   const PHOTO_KEY = 'feliz-cumple-fotos-v1';
   const photos = [null, null, null];
   let galleryImgs = [];
@@ -1204,17 +1212,24 @@
   }
 
   function applyPhoto(i, dataUrl) {
-    photos[i] = dataUrl || null;
     const label = $('#gallery').children[i];
     const img = galleryImgs[i];
     if (!label || !img) return;
-    if (dataUrl) {
-      img.src = dataUrl;
+
+    const fixed = DEFAULTS[i];
+    const src = dataUrl || (fixed ? fixed.src : null);
+
+    photos[i] = dataUrl || null; // solo se guardan las que agrega la persona
+
+    if (src) {
+      img.src = src;
+      img.style.objectPosition = dataUrl ? '50% 50%' : (fixed ? fixed.pos : '50% 50%');
       label.classList.add('has');
     } else {
       img.removeAttribute('src');
       label.classList.remove('has');
     }
+    label.classList.toggle('user', !!dataUrl);
   }
 
   function buildGallery() {
@@ -1230,7 +1245,7 @@
       input.accept = 'image/*';
 
       const img = document.createElement('img');
-      img.alt = '';
+      img.alt = 'Foto de ' + CONFIG.nombre;
       galleryImgs[i] = img;
 
       const ph = document.createElement('div');
@@ -1244,7 +1259,7 @@
       const remove = document.createElement('button');
       remove.type = 'button';
       remove.className = 'remove';
-      remove.setAttribute('aria-label', 'Quitar esta foto');
+      remove.setAttribute('aria-label', DEFAULTS[i] ? 'Volver a la foto original' : 'Quitar esta foto');
       remove.textContent = '✕';
 
       remove.addEventListener('click', function (e) {
@@ -1272,6 +1287,7 @@
       gallery.appendChild(label);
 
       if (photos[i]) applyPhoto(i, photos[i]);
+      else applyPhoto(i, null);
     }
   }
 

@@ -63,12 +63,23 @@ spotify: 'https://open.spotify.com/track/6xQwzsTwW0GFeYfADodNsc',
 
 ## Fotos
 
-- **Desde la página**: tocá un marco → elegí una foto. Se recorta y se guarda en el
-  navegador; al volver a abrir la página siguen ahí. La ✕ quita la foto.
-- **Importante**: se guardan en *ese* dispositivo/navegador. Si querés que las fotos
-  viajen dentro del archivo (para que las vea ella en su celular), decime y las
-  incrusto en el HTML.
-- **Fijas en el archivo**: también se pueden incrustar a mano (base64) si preferís.
+- **Fotos fijas** (las que ve todo el mundo): están en `public/img/` y se enlazan
+  desde `DEFAULTS` en `public/index.html`:
+
+  ```js
+  const DEFAULTS = [
+    { src: 'img/favorita.jpeg', pos: '58% 42%' }, // pos = recorte (object-position)
+    { src: 'img/sonrisa.jpeg', pos: '50% 30%' },
+    null                                          // marco vacío
+  ];
+  ```
+
+  Para cambiar una foto: reemplazá el archivo por otro con el mismo nombre (o
+  cambiá el `src`). El segundo valor, `pos`, ajusta qué parte se ve recortada.
+- **Desde la página**: tocá un marco → elegí una foto. Se comprime y se guarda en
+  *ese* navegador (por encima de la foto fija). La ✕ vuelve a la foto original.
+- **Importante**: lo que se sube desde la página no se publica; solo lo de
+  `public/img/` es igual para todas las personas que entren al link.
 
 ## Música
 
