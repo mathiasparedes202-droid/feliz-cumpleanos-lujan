@@ -16,7 +16,6 @@ solo archivo (`public/index.html`): no necesita instalación ni servidor.
 
 - **Portada** con su nombre, globos y corazones flotando.
 - **Carta** con el mensaje principal.
-- **"Lo que amo de ti"**: seis tarjetas con razones (incluye el tereré 🧉).
 - **Pastel interactivo**: se soplan las velitas una por una (o todas con el botón) y
   explota el confeti. Después se pueden volver a encender.
 - **Galería**: tres marcos tipo polaroid. Las fotos que se cargan **quedan guardadas

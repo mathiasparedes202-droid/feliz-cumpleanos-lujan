@@ -603,18 +603,6 @@
     </div>
   </section>
 
-  <!-- ================= RAZONES ================= -->
-  <section class="block" id="razones">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="kicker">Y podría seguir</span>
-        <h2>Lo que amo de ti</h2>
-        <p>Una lista corta, porque el infinito no cabe en una página.</p>
-      </div>
-      <div class="grid" id="razonesGrid"></div>
-    </div>
-  </section>
-
   <!-- ================= PASTEL ================= -->
   <section class="block" id="pastel">
     <div class="wrap">
@@ -721,15 +709,7 @@
     carta: [
       'Me quedé pensando qué te puedo regalar y la verdad es que no hay nada que esté a la altura de lo que sos para mí. Así que te dejo esto: unas líneas escritas de noche, pensando en vos, sin apuro y sin filtro.',
       'Gracias por las risas de todos los días, por los mensajes a cualquier hora, por escucharme cuando ni yo me aguanto y por sacarme una sonrisa justo cuando no tenía ganas de nada. Con vos hasta un día común se vuelve un buen día.',
-      'Hoy solo quiero que seas feliz, de verdad y sin condiciones. Que este año te traiga todo lo que estás buscando y un poquito más. Y cuando se te olvide lo mucho que valés, avisame: acá voy a estar para recordártelo las veces que haga falta.'
-    ],
-    razones: [
-      { ico: '🥰', titulo: 'Tu risa', texto: 'La que se te escapa cuando algo te da vergüenza. Es mi sonido favorito, en serio.' },
-      { ico: '✨', titulo: 'Cómo contás las cosas', texto: 'Con tus manos, tus pausas y esas historias que siempre terminan en algo que me hace reír.' },
-      { ico: '🫂', titulo: 'Tus abrazos de reencuentro', texto: 'Ese segundo en que te abrazo después de días y el mundo se acomoda solo.' },
-      { ico: '🌙', titulo: 'Las charlas de madrugada', texto: 'Cuando ya no queda tema pero seguimos hablando y ninguno de los dos quiere cortar.' },
-      { ico: '💪', titulo: 'Tu forma de no rendirte', texto: 'Admiro cómo te levantás los días difíciles, sin hacer ruido y sin que nadie te aplauda.' },
-      { ico: '🧉', titulo: 'El tereré con vos', texto: 'La ronda que no se termina, el calor de enero y las charlas sin apuro. Ahí soy feliz.' }
+      'Hoy solo quiero que seas feliz. Y cuando se te olvide lo mucho que valés, avisame: acá voy a estar para recordártelo las veces que haga falta.'
     ],
     secreto: 'Sos mi persona favorita en el mundo. Gracias por existir, por elegirme y por hacer que lo cotidiano sea extraordinario. Te quiero un montón. Feliz cumpleaños. 🎂💖',
     firmaRegalo: 'Te quiero, hoy y siempre'
@@ -757,29 +737,6 @@
       const p = document.createElement('p');
       p.textContent = parrafo;
       carta.appendChild(p);
-    });
-
-    const grid = $('#razonesGrid');
-    CONFIG.razones.forEach(function (r, i) {
-      const card = document.createElement('article');
-      card.className = 'card reveal';
-      card.style.transitionDelay = (i % 3) * 90 + 'ms';
-
-      const ico = document.createElement('div');
-      ico.className = 'ico';
-      ico.setAttribute('aria-hidden', 'true');
-      ico.textContent = r.ico;
-
-      const h3 = document.createElement('h3');
-      h3.textContent = r.titulo;
-
-      const p = document.createElement('p');
-      p.textContent = r.texto;
-
-      card.appendChild(ico);
-      card.appendChild(h3);
-      card.appendChild(p);
-      grid.appendChild(card);
     });
   }
 
