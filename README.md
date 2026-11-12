@@ -1,13 +1,16 @@
 # 🎂 Feliz Cumpleaños, Luján
 
-Una página hecha a mano para celebrar a alguien muy especial. Es un solo archivo
-(`index.html`): no necesita instalación ni servidor. Se abre con doble clic.
+Una página hecha a mano para celebrar a alguien muy especial. Todo el sitio es un
+solo archivo (`public/index.html`): no necesita instalación ni servidor.
+
+**En vivo:** https://feliz-cumpleanos-lujan.mathiasparedes202.workers.dev
+**Repo:** https://github.com/mathiasparedes202-droid/feliz-cumpleanos-lujan
 
 ## Cómo abrirla
 
-1. Hacé doble clic en `index.html` (se abre en tu navegador).
-2. Para que la vea ella, se la podés mandar por WhatsApp (como archivo), por mail,
-   o subirla a cualquier hosting gratis (GitHub Pages, Netlify, etc.).
+1. Hacé doble clic en `public/index.html` (se abre en tu navegador).
+2. Para compartirla, mandale el link de Cloudflare de arriba: funciona en cualquier
+   celular sin instalar nada.
 
 ## Qué incluye
 
@@ -26,7 +29,7 @@ Una página hecha a mano para celebrar a alguien muy especial. Es un solo archiv
 
 ## Personalización
 
-Abrí `index.html` con cualquier editor de texto y buscá `PERSONALIZÁ ACÁ`.
+Abrí `public/index.html` con cualquier editor de texto y buscá `PERSONALIZÁ ACÁ`.
 Todo el contenido está en un solo objeto:
 
 ```js
@@ -49,7 +52,7 @@ Cambiá solo lo que está entre comillas y guardá.
 Pegá el link de la playlist (o de la canción) en `spotify`:
 
 ```js
-spotify: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M',
+spotify: 'https://open.spotify.com/track/6xQwzsTwW0GFeYfADodNsc',
 ```
 
 - Con eso aparece la sección **"Nuestra banda sonora"** con el reproductor, y un
@@ -73,3 +76,18 @@ spotify: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M',
 La melodía se genera con el navegador (Web Audio), así que no hace falta ningún
 archivo de audio. Empieza solo cuando tocás el botón de música o abrís el regalo
 (los navegadores no permiten audio automático sin un clic).
+
+## Publicar cambios en Cloudflare
+
+El sitio se publica desde la carpeta `public/`. Después de editar algo:
+
+```powershell
+git add -A
+git commit -m "cambios"
+git push
+npx wrangler deploy
+```
+
+- Sitio: https://feliz-cumpleanos-lujan.mathiasparedes202.workers.dev
+- Proyecto de Cloudflare: `feliz-cumpleanos-lujan`
+- La configuración está en `wrangler.jsonc` (publica solo lo que está en `public/`).
